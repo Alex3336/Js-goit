@@ -1,0 +1,24 @@
+let age = 14;
+let myName = "Олександр";
+let isStudent = true;
+let myString = "Не порівнюйте себе з іншими.";
+let myNumber = 14;
+let myNull = null;
+let urName = prompt("enter your username");
+let question = confirm(`продати душу`);
+let message = question ? "Дякую за підтвердження!" : "Дію відмінено!";
+let danger = "дія небезпечна";
+let dangerConfirm = confirm(`дія небезпечна`);
+let dangerMessage = dangerConfirm ? "Дякую за підтвердження!" : "Дію відмінено!";
+
+console.log(age);
+console.log(myName);
+console.log(isStudent);
+console.log(myString);
+console.log(myNumber + 10);
+console.log(myNull);
+console.log(urName);
+alert(`привітання до ${urName}`);
+alert(message);
+alert(danger);
+alert(dangerMessage);
