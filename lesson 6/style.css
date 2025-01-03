@@ -1,0 +1,16 @@
+#input-sigmo{
+    margin: 0.1%;
+    width: 100px;  height: 50px;
+}
+#input-venom{
+    margin: 0.1%;
+    width: 100px;  height: 50px;
+}
+#input-guards{
+    margin: 0.1%;
+    width: 100px;  height: 50px;
+}
+.button-thanksgiving{
+    border: 5px solid #453458aa;  background-color: salmon;
+    outline: 0;
+}

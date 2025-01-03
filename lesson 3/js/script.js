@@ -1,0 +1,16 @@
+let minutes = Number.parseInt(prompt("enter minutes"));
+let hours = Math.round(minutes / 60);
+let days = Math.round(hours / 24);
+let years = Math.round(days / 365);
+console.log(minutes);
+console.log(hours);
+console.log(days);
+console.log(years);
+let enteredYears = Number.parseInt(prompt("enter years"));
+let enteredDays = Math.round(enteredYears * 365);
+let enteredHours = Math.round(enteredDays * 24);
+let enteredMinutes = Math.round(enteredHours * 60);
+console.log(enteredYears);
+console.log(enteredDays);
+console.log(enteredHours);
+console.log(enteredMinutes);
