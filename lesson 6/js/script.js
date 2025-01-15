@@ -21,14 +21,14 @@
 //     }
 // }
 
-document.getElementById('happy').onclick = function(){
-    let password = document.getElementById('input-venom').value;
-    let email = document.getElementById('input-sigmo').value;
-    let name = document.getElementById('input-guards').value;
-    if (name.length >= 3 && email.includes("@") && email.includes(".") && password.length >= 6){
-        window.location.href = './WebStudio_main.html';
-    }
-    else{
-        alert("Невірне повторення пароля, не вірний email або невірна довжина імені");
-    }
-}
+// document.getElementById('happy').onclick = function(){
+//     let password = document.getElementById('input-venom').value;
+//     let email = document.getElementById('input-sigmo').value;
+//     let name = document.getElementById('input-guards').value;
+//     if (name.length >= 3 && email.includes("@") && email.includes(".") && password.length >= 6){
+//         window.location.href = './WebStudio_main.html';
+//     }
+//     else{
+//         alert("Невірне повторення пароля, не вірний email або невірна довжина імені");
+//     }
+// }
