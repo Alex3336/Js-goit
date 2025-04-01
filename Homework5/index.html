@@ -6,25 +6,59 @@
     <title>pisisinus</title>
 </head>
 <body>
-    <form>
-        <ul>
-            <li>
-                <button id="firstCheckbox" type="submit"
-                style="height: 100px; width: 100px;"></button>
-                <p id="firstOption">Кава</p>
-            </li>
-            <li>
-                <button id="secondCheckbox" type="submit"
-                style="height: 100px; width: 100px;"></button>
-                <p id="secondOption">Чай</p>
-            </li>
-            <li>
-                <button id="thirdCheckbox" type="submit"
-                style="height: 100px; width: 100px;"></button>
-                <p id="thirdOption">Сік</p>
-            </li>
-        </ul>
-    </form>
+    <button id="juice" type="button">сік</button>
+    <button id="coffee" type="button">кава</button>
+    <button id="tea" type="button">чай</button><br><br>
+
+    <label for="num1">Перше число:</label>
+        <input type="number" id="num1"><br><br>
+
+    <label for="num2">Друге число:</label>
+        <input type="number" id="num2"><br><br>
+
+    <label for="operator">Оператор:</label>
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select><br><br>
+
+    <button onclick="calculate()">Обчислити</button>
     <script src="./js/script.js" type="module"></script>
+    <script>
+        function calculate() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+            let result;
+
+            switch (operator) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                    if (num2 === 0) {
+                        alert("Ділення на нуль неможливе!");
+                        return; 
+                    } 
+                    else {
+                        result = num1 / num2;
+                    }
+                    break;
+            default:
+                alert("Невідомий оператор");
+                return; 
+            }
+
+            alert("Результат: " + result);
+        }
+    </script>
 </body>
 </html>
