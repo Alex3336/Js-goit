@@ -85,33 +85,34 @@ const users = [
   },
 ];
 
-const calculateTotalBalance = users => {
-  return users.reduce((total, user) => total + user.balance, 0);
+
+const getUserNames = users => {
+  return users.map(user => user.name);
 };
 
-console.log(calculateTotalBalance(users));
+console.log(getUserNames(users));
 
-const getUsersWithFriend = (users, friendName) => {
-  return users
-    .filter(user => user.friends.includes(friendName))
-    .map(user => user.name);
+const getUsersWithEyeColor = (users, color) => {
+  return users.filter(user => user.eyeColor === color);
 };
 
-console.log(getUsersWithFriend(users, 'Briana Decker'));
-console.log(getUsersWithFriend(users, 'Goldie Gentry'));
+console.log(getUsersWithEyeColor(users, 'blue'));
 
-const getNamesSortedByFriendsCount = users => {
-  return [...users] // Створюємо копію масиву, щоб не змінювати оригінал
-    .sort((a, b) => a.friends.length - b.friends.length)
-    .map(user => user.name);
+const getUsersWithGender = (users, gender) => {
+  return users.filter(user => user.gender === gender).map(user => user.name);
 };
 
-console.log(getNamesSortedByFriendsCount(users));
+console.log(getUsersWithGender(users, 'male'));
 
-const getSortedUniqueSkills = users => {
-  const allSkills = users.flatMap(user => user.skills);
-  const uniqueSkills = [...new Set(allSkills)];
-  return uniqueSkills.sort();
+const getInactiveUsers = users => {
+  return users.filter(user => !user.isActive);
 };
 
-console.log(getSortedUniqueSkills(users));
+console.log(getInactiveUsers(users));
+
+const getUserWithEmail = (users, email) => {
+  return users.find(user => user.email === email);
+};
+
+console.log(getUserWithEmail(users, 'shereeanthony@kog.com'));
+console.log(getUserWithEmail(users, 'elmahead@omatom.com'));
