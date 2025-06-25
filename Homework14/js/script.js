@@ -101,7 +101,7 @@ console.log(getUsersWithFriend(users, 'Briana Decker'));
 console.log(getUsersWithFriend(users, 'Goldie Gentry'));
 
 const getNamesSortedByFriendsCount = users => {
-  return [...users] // Створюємо копію масиву, щоб не змінювати оригінал
+  return [...users] 
     .sort((a, b) => a.friends.length - b.friends.length)
     .map(user => user.name);
 };
