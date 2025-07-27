@@ -1,0 +1,10 @@
+{{#each this}}
+<div class="country-card {{#if infected}}infected{{/if}}">
+    <img src="{{flag}}" alt="Flag of {{name}}" class="country-flag">
+    <h2>{{name}}</h2>
+    <p><strong>Capital:</strong> {{capital}}</p>
+    <p><strong>Population:</strong> {{population}}</p>
+    <p><strong>Language:</strong> {{language}}</p>
+    <p><strong>Currency:</strong> {{currency}}</p>
+</div>
+{{/each}}
