@@ -6,10 +6,65 @@ document.addEventListener("DOMContentLoaded", () => {
     let data = [];
 
     // ===== get =====
-    async function getStudents(url) {
-        const response = await fetch(url);
-        const students = await response.json();
-        return students;
+    async function getStudents() {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`error GET: ${response.status}`);
+            const students = await response.json();
+            return students;
+        } catch (error) {
+            console.error("error while getting:", error);
+            return [];
+        }
+    }
+
+    // ===== post =====
+    async function addStudent(student) {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                body: JSON.stringify(student),
+                headers: { "Content-Type": "application/json" },
+            });
+            if (!response.ok) throw new Error(`error POST: ${response.status}`);
+            const result = await response.json();
+            return result;
+        } catch (error) {
+            console.error("error while adding:", error);
+            return null;
+        }
+    }
+
+    // ===== put/patch =====
+    async function updateStudent(id, updatedStudent) {
+        try {
+            const response = await fetch(`${url}/${id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(updatedStudent),
+            });
+            if (!response.ok)
+                throw new Error(`error PATCH: ${response.status}`);
+            const result = await response.json();
+            return result;
+        } catch (error) {
+            console.error(`error while patching ${id}:`, error);
+            return null;
+        }
+    }
+
+    // ===== delete =====
+    async function deleteStudent(id) {
+        try {
+            if (!confirm("RR u ok??????")) return;
+            const response = await fetch(`${url}/${id}`, { method: "DELETE" });
+            if (!response.ok)
+                throw new Error(`error DELETE: ${response.status}`);
+            data = data.filter((student) => student.id !== id);
+            renderStudents(data);
+        } catch (error) {
+            console.error(`error while deleting ${id}:`, error);
+        }
     }
 
     // ===== render =====
@@ -50,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 isEnrolled: document.querySelector("#isEnrolled").checked,
             };
 
-            addStudent(url, student).then((resp) => {
+            addStudent(student).then((resp) => {
                 data.push(resp);
                 renderStudents(data);
                 form.reset();
@@ -73,44 +128,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ===== post =====
-    async function addStudent(url, student) {
-        const options = {
-            method: "POST",
-            body: JSON.stringify(student),
-            headers: { "Content-Type": "application/json" },
-        };
-        const response = await fetch(url, options);
-        const result = await response.json();
-        return result;
-    }
-
-    // ===== put =====
-    async function updateStudent(id, updatedStudent) {
-        const response = await fetch(`${url}/${id}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updatedStudent),
-        });
-
-        const result = await response.json();
-        return result;
-    }
-
-    // ===== delete =====
-    async function deleteStudent(id) {
-        if (confirm("r u ok??")) {
-            await fetch(`${url}/${id}`, { method: "DELETE" });
-            data = data.filter((student) => student.id !== id);
-            renderStudents(data);
-        }
-    }
-
     // ===== students load =====
     document
         .querySelector("#get-students-btn")
         .addEventListener("click", () => {
-            getStudents(url)
+            getStudents()
                 .then((students) => {
                     data = students;
                     renderStudents(data);
@@ -163,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         await updateStudent(currentEditId, updatedStudent);
         modal.style.display = "none";
-        data = await getStudents(url);
+        data = await getStudents();
         renderStudents(data);
     });
 });
