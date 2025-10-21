@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>~JS test~</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                background-color: khaki;
+                color: #fff;
+                padding: 20px;
+            }
+            input,
+            button {
+                margin: 4px;
+                padding: 6px;
+                border-radius: 6px;
+            }
+            button {
+                cursor: pointer;
+                background: darkslateblue;
+                color: #fff;
+                border: none;
+            }
+            .student {
+                background-color: dimgray;
+                padding: 10px;
+                border-radius: 8px;
+                margin-top: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Students</h1>
+        <div>
+            <input id="name" placeholder="name" />
+            <input id="age" type="number" placeholder="age" />
+            <input id="email" type="email" placeholder="email" />
+            <input id="tel" type="tel" placeholder="tel" />
+            <button id="addBtn">add ➕</button>
+        </div>
+        <div id="list"></div>
+        <script src="script.js"></script>
+    </body>
+</html>
